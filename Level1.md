@@ -76,16 +76,73 @@ public class Cycle {
 // Debug and see the values
 // We are breaking a few good programming principles!!!
 // Exercise 1 -> Create a new method in cycle to decrease speed.
+// We are going a little slow
 ```
 \com\in28minutes\program4\MotorBike.java
 ```
 package com.in28minutes.program4;
 
-//Learning : Creating this class from scratch. From Zero 
+//Learning : Creating this class from scratch. From Zero
 //Learning : Creating more methods and more variables 
+//Learning : Print current state of an object
 public class MotorBike {
 	int currentSpeed;
 	int currentGear;
+
+	void increaseSpeed() {
+		currentSpeed = currentSpeed + 10;
+	}
+
+	void decreaseSpeed() {
+		currentSpeed = currentSpeed - 10;
+	}
+
+	void nextGear() {
+		currentGear = currentGear + 1;
+	}
+
+	@Override
+	public String toString() {
+		return "MotorBike [currentSpeed=" + currentSpeed + ", currentGear=" + currentGear + "]";
+	}
+
+	public static void main(String[] args) {
+		MotorBike ducati = new MotorBike();
+		ducati.currentSpeed = 500;
+
+		MotorBike honda = new MotorBike();
+		honda.currentSpeed = 600;
+
+		ducati.increaseSpeed();
+		honda.increaseSpeed();
+		ducati.nextGear();
+		System.out.println(ducati);
+	}
+
+}
+
+// Debug and see the values
+// We are breaking a few good programming principles!!!
+// State of an object should be changed only by a method on the object
+// We do not have limits on Speed or Gears!!! We will get there soon!
+// Exercise 1 -> Create the prevGear method
+```
+\com\in28minutes\program5\MotorBike.java
+```
+package com.in28minutes.program5;
+
+//Learning : Special Method => Constructor
+//Learning : Better Encapsulation
+public class MotorBike {
+	int currentSpeed;
+	int currentGear;
+
+	public MotorBike(int currentSpeed) {
+		// currentSpeed is called parameter
+		// this is a special reference variable to access
+		// values from current object
+		this.currentSpeed = currentSpeed;
+	}
 
 	void increaseSpeed() {
 		currentSpeed = currentSpeed + 10;
@@ -103,30 +160,32 @@ public class MotorBike {
 		currentGear = currentGear - 1;
 	}
 
+	@Override
+	public String toString() {
+		return "MotorBike [currentSpeed=" + currentSpeed + ", currentGear=" + currentGear + "]";
+	}
+
 	public static void main(String[] args) {
-		MotorBike ducati = new MotorBike();
-		ducati.currentSpeed = 500;
-
-		MotorBike honda = new MotorBike();
-		honda.currentSpeed = 600;
-
+		MotorBike ducati = new MotorBike(500);
+		MotorBike honda = new MotorBike(600);
 		ducati.increaseSpeed();
-
 		honda.increaseSpeed();
 	}
 }
 
-// Debug and see the values
-// We are breaking a few good programming principles!!!
-// We do not have limits on Speed or Gears!!! We will get there soon!
-// Exercise 1 -> Create the prevGear method
+// How is constructor different from a normal method?
+// Default value for a object member variable
+// This is the first program that we created with good encapsulation!
+// There are still minor things that need to fixed! We will discuss them next!
+// add 500 to line 30 and show how eclipse can do magic
+// Exercise 1 -> Create a constructor with both current speed and current gear!
+// Exercise 2 -> Enhance earlier examples with constructors and use them!
 ```
-\com\in28minutes\program5\MotorBike.java
+\com\in28minutes\program6\MotorBike.java
 ```
-package com.in28minutes.program5;
+package com.in28minutes.program6;
 
-//Learning : Special Method => Constructor
-//Learning : Better Encapsulation
+//Introduce If Condition
 public class MotorBike {
 	int currentSpeed;
 	int currentGear;
@@ -151,19 +210,17 @@ public class MotorBike {
 		currentGear = currentGear - 1;
 	}
 
+	@Override
+	public String toString() {
+		return "MotorBike [currentSpeed=" + currentSpeed + ", currentGear=" + currentGear + "]";
+	}
+
 	public static void main(String[] args) {
 		MotorBike ducati = new MotorBike(500);
 		MotorBike honda = new MotorBike(600);
 		ducati.increaseSpeed();
 		honda.increaseSpeed();
+		ducati.currentSpeed = ducati.currentSpeed + 10;
 	}
 }
-
-// add 500 to line 30 and show how
-// We are breaking a few good programming principles!!!
-// How is constructor different from a normal method?
-// Default value for a object member variable
-// This is the first program that we created with good encapsulation!
-// Exercise 1 -> Create a constructor with both current speed and current gear!
-// Exercise 2 -> Enhance earlier examples with constructors and use them!
 ```
