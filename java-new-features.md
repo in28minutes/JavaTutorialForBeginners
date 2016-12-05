@@ -1,3 +1,5 @@
+\readme.txt
+```
 ##Java 5
 ###StringBuilder class
 ###Generics
@@ -357,7 +359,176 @@ BiPredicate<L, R>	(L, R) -> boolean
 BiConsumer<T, U>	(T, U) -> void
 BiFunction<T, U, R>
 
-LambdaExpressionTest
+
+#STREAMS
+ many Stream functions are lazy, you do need to use an eager operation such as collect at the end of a sequence of chained method calls
+ 
+ A higher-order function is a function that either takes another function as an argument or returns a function as its result.
+ 
+ map is a higher-order function because its mapper argument is a function. In fact, nearly all the functions that we’ve encountered on the Stream interface are higher-order functions.
+ 
+ Method References
+ 
+ country -> country.getName();
+ Country::name();
+ 
+ 
+ //.parallelStream()
+ On a 4-core machine with < 50 students, the sequential code was multiple times faster. 
+ At 100 students, almost same
+ At 10,000 students, parallel code multiple times faster.
+ 
+ ##Interfaces
+In support of Streams, there are new methods in interfaces such as List, Map, and Set, which have been largely unchanged since the long-gone days of Java 1.1. Fortunately the Java 8 language support adds a default method type in interfaces, so your custom implementations of these interfaces are not required to change (as long as you make sure you change your IDE settings to Java 8 Compiler Compliance).
+As one example of default methods in action, Iterable gets a new default method called forEach(), which lets you write code like this:
+myList.forEach(o -> /* do something with o here... */);
+This is discussed further in Iterable.forEach method (Java 8).
+A new JavaScript implementation codenamed Nashorn is available via javax.script (see Calling Other Languages via javax.script) and can also be run from the command line.
+ 
+#Functional Programming 
+  a programming paradigm, a style of building the structure and elements of computer programs, that treats computation as the evaluation of mathematical functions and avoids state and mutable data. Functional programming emphasizes functions that produce results that depend only on their inputs and not on the program state - i.e. pure mathematical functions. It is a declarative programming paradigm, which means programming is done with expressions. In functional code, the output value of a function depends only on the arguments that are input to the function, so calling a function f twice with the same value for an argument x will produce the same result f(x) both times. Eliminating side effects, i.e. changes in state that don’t depend on the function inputs, can make it much easier to understand and predict the behavior of a program, which is one of the key motivations for the development of functional programming
+```
+\src\com\in28minutes\java\newfeatures\threads\Example1.java
+```
+package com.in28minutes.java.newfeatures.threads;
+
+import java.util.concurrent.TimeUnit;
+
+public class Example1 {
+	public static void main(String[] args) {
+		Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					String threadName = Thread.currentThread().getName();
+					System.out.println("Start " + threadName);
+					TimeUnit.SECONDS.sleep(1);
+					System.out.println("End " + threadName);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		};
+
+		Thread thread1 = new Thread(runnable);
+		thread1.start();
+
+		Thread thread2 = new Thread(runnable);
+		thread2.start();
+
+		System.out.println("Done!");
+	}
+}
+```
+\src\com\in28minutes\java\newfeatures\threads\Example2.java
+```
+package com.in28minutes.java.newfeatures.threads;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class Example2 {
+	public static void main(String[] args) {
+		ExecutorService executor = Executors.newSingleThreadExecutor();
+		executor.submit(() -> {
+			String threadName = Thread.currentThread().getName();
+			System.out.println("Hello " + threadName);
+		});
+
+	}
+}
+```
+\src\com\in28minutes\java\newfeatures\threads\ThreadLocalExample1.java
+```
+package com.in28minutes.java.newfeatures.threads;
+
+import java.util.Random;
+
+public class ThreadLocalExample1 {
+
+	public static class ThreadClass implements Runnable {
+		int value;
+		Random ran = new Random();
+
+		@Override
+		public void run() {
+			value = ran.nextInt();
+			System.out.println(Thread.currentThread().getName() + "START" + value);
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+			}
+			System.out.println(Thread.currentThread().getName() + " END " + value);
+		}
+
+	}
+
+	public static void main(String[] args) throws InterruptedException {
+		ThreadClass sharedThreadInstance = new ThreadClass();
+		Thread thread1 = new Thread(sharedThreadInstance);
+		Thread thread2 = new Thread(sharedThreadInstance);
+		Thread thread3 = new Thread(sharedThreadInstance);
+
+		// Start all Threads
+		thread1.start();
+		thread2.start();
+		thread3.start();
+
+		// Wait for all threads to complete
+		thread1.join();
+		thread2.join();
+		thread3.join();
+	}
+
+}
+```
+\src\com\in28minutes\java\newfeatures\threads\ThreadLocalExample2.java
+```
+package com.in28minutes.java.newfeatures.threads;
+
+import java.util.Random;
+
+public class ThreadLocalExample2 {
+
+	public static class ThreadClass implements Runnable {
+		ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();
+		Random ran = new Random();
+
+		@Override
+		public void run() {
+			threadLocal.set(ran.nextInt());
+			System.out.println(Thread.currentThread().getName() + "START" + threadLocal.get());
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+			}
+			System.out.println(Thread.currentThread().getName() + " END " + threadLocal.get());
+		}
+
+	}
+
+	public static void main(String[] args) throws InterruptedException {
+		ThreadClass sharedThreadInstance = new ThreadClass();
+		Thread thread1 = new Thread(sharedThreadInstance);
+		Thread thread2 = new Thread(sharedThreadInstance);
+		Thread thread3 = new Thread(sharedThreadInstance);
+
+		// Start all Threads
+		thread1.start();
+		thread2.start();
+		thread3.start();
+
+		// Wait for all threads to complete
+		thread1.join();
+		thread2.join();
+		thread3.join();
+	}
+
+}
+```
+\test\LambdaExpressionTest.java
 ```
 import static org.junit.Assert.assertEquals;
 
@@ -592,10 +763,107 @@ public class LambdaExpressionTest {
 	}
 
 }
-
 ```
+\test\LambdaExpressionTest2.java
+```
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-StreamsTest
+import org.junit.Test;
+
+public class LambdaExpressionTest2 {
+
+	public class Person {
+
+		private final String name;
+		private final int age;
+
+		public Person(final String theName, final int theAge) {
+			name = theName;
+			age = theAge;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public int getAge() {
+			return age;
+		}
+
+		public int ageDifference(final Person other) {
+			return age - other.age;
+		}
+
+		@Override
+		public String toString() {
+			return String.format("%s - %d", name, age);
+		}
+	}
+
+	final List<Person> people = Arrays.asList(new Person("John", 20), new Person("Sara", 21), new Person("Jane", 21),
+			new Person("Greg", 35));
+
+	@Test
+	public void testSomething() {
+
+		final Function<String, Predicate<String>> startsWithLetter = (
+				String letter) -> (String name) -> name.startsWith(letter);
+
+		final List<String> friends = Arrays.asList("Brian", "Nate", "Neal", "Raju", "Sara", "Scott");
+
+		friends.stream().forEach(System.out::println);
+
+		friends.stream().map(String::toUpperCase).forEach(System.out::println);
+
+		friends.stream().filter(startsWithLetter.apply("N")).forEach(System.out::println);
+
+		System.out.println(friends.stream().reduce((s1, s2) -> s1.length() > s2.length() ? s1 : s2).get());
+
+		System.out.println(friends.stream().map(String::toUpperCase).collect(Collectors.joining(", ")));
+
+		final String str = "text1234";
+
+		str.chars().forEach(ch -> System.out.println(ch));
+
+		str.chars().filter(Character::isDigit).forEach(System.out::println);
+
+		people.stream().sorted((p1, p2) -> p1.ageDifference(p2)).forEach(System.out::println);
+
+		people.stream().sorted(Person::ageDifference).forEach(System.out::println);
+
+		people.stream().sorted((person1, person2) -> person1.getName().compareTo(person2.getName()))
+				.forEach(System.out::println);
+
+	}
+
+	@Test
+	public void lambdaExpression_simpleExample() {
+		List<Integer> numbers = Arrays.asList(1, 3, 4, 6, 2, 7);
+		numbers.stream().filter(StreamsTest::isOdd).forEach(number -> System.out.print(number));
+		// 137
+	}
+
+	@Test
+	public void lambdaExpression_predicate() {
+		List<Integer> numbers = Arrays.asList(1, 3, 4, 6, 2, 7);
+		numbers.stream().filter((number) -> (number % 2 != 0)).forEach(number -> System.out.print(number));
+		// 137
+	}
+
+	@Test
+	public void lambdaExpression_BiFunction() {
+		List<Integer> numbers = Arrays.asList(1, 3, 4, 6, 2, 7);
+		numbers.stream().forEach(number -> System.out.print(number));
+		// 137
+	}
+
+}
+```
+\test\StreamsTest.java
 ```
 
 import static org.junit.Assert.assertEquals;
@@ -776,7 +1044,54 @@ public class StreamsTest {
 			sum += value;
 		System.out.println(sum);
 	}
+
+	@Test
+	public void sumOfOddNumbers_Usual() {
+		List<Integer> numbers = Arrays.asList(1, 3, 4, 6, 2, 7);
+		int sum = 0;
+		for (int number : numbers)
+			if (number % 2 != 0)
+				sum += number;
+		assertEquals(11, sum);
+	}
+
+	@Test
+	public void sumOfOddNumbers_FunctionalProgramming() {
+		List<Integer> numbers = Arrays.asList(1, 3, 4, 6, 2, 7);
+		int sum = numbers.stream().filter(StreamsTest::isOdd).reduce(0, Integer::sum);
+		assertEquals(11, sum);
+	}
+
+	static boolean isOdd(int number) {
+		return number % 2 != 0;
+	}
+
+	@Test
+	public void streamExample_Distinct() {
+		List<Integer> numbers = Arrays.asList(1, 1, 2, 6, 2, 3);
+		numbers.stream().distinct().forEach(System.out::print);
+		// 1263
+	}
+
+	@Test
+	public void streamExample_Sorted() {
+		List<Integer> numbers = Arrays.asList(1, 1, 2, 6, 2, 3);
+		numbers.stream().sorted().forEach(System.out::print);
+		// 112236
+	}
+
+	@Test
+	public void streamExample_Filter() {
+		List<Integer> numbers = Arrays.asList(1, 3, 4, 6, 2, 7);
+		numbers.stream().filter(StreamsTest::isOdd).forEach(System.out::print);
+		// 137
+	}
+
+	@Test
+	public void streamExample_Collect() {
+		List<Integer> numbers = Arrays.asList(1, 3, 4, 6, 2, 7);
+		List<Integer> oddNumbers = numbers.stream().filter(StreamsTest::isOdd).collect(Collectors.toList());
+		System.out.println(oddNumbers);
+		// [1, 3, 7]
+	}
 }
-
-```
-
