@@ -47,18 +47,18 @@ public class BuilderPattern {
 
 		@Override
 		public String toString() {
-			return String
-					.format("Coffee [type=%s, sugar=%s, milk=%s, size=%s]",
-							type, sugar, milk, size);
+			return String.format(
+					"Coffee [type=%s, sugar=%s, milk=%s, size=%s]", type,
+					sugar, milk, size);
 		}
 
 	}
 
 	public static void main(String[] args) {
-		Coffee coffee = new Coffee.Builder("Mocha").milk(
-				true).sugar(false).size("Large").build();
+		Coffee coffee = new Coffee.Builder("Mocha").sugar(false)
+				.size("Large").build();
 		System.out.println(coffee);
-		
+
 		//Simplifies Creation
 		//More Readable Code
 		//Values cannot be modified
