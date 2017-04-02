@@ -1,5 +1,5 @@
-# Java Tutorial for Beginners with Examples
-## Making Java a cake walk!
+# Title of the Best Course in the world
+## Caption for the course.
 
 * [Installing Eclipse, Maven and Java](#installing-tools)
 * [Running Examples](#running-examples)
@@ -11,6 +11,12 @@
   - [Our Approach](#our-approach)
   - [Find Us](#useful-links)
   - [Other Courses](#other-courses)
+
+## Getting Started
+- Eclipse - https://www.youtube.com/watch?v=s4ShbtOHMCA
+- Maven - https://www.youtube.com/watch?v=0CFWeVgzsqY
+- JUnit - https://www.youtube.com/watch?v=o5k9NOR9lrI
+- Mockito - https://www.youtube.com/watch?v=d2KwvXQgQx4
 
 ## Installing Tools
 - PDF : https://github.com/in28minutes/SpringIn28Minutes/blob/master/InstallationGuide-JavaEclipseAndMaven_v2.pdf
@@ -24,6 +30,7 @@
 - For help : use our installation guide - https://github.com/in28minutes/SpringIn28Minutes/blob/master/InstallationGuide-JavaEclipseAndMaven_v2.pdf & https://www.youtube.com/watch?v=DLPjCZ5n_SM
 
 ## Course Overview
+
 - I'm Ranga Karanam. I've so and so much experience with ...
 - In this course, You will learn the *** Framework step by step with (*** functionality) using (*** framework features)
 - You will learn the basics like *** and move on to the advanced concepts like ***.
@@ -32,13 +39,51 @@
   - Maven for dependency management, building and running the application in tomcat.
   - Eclipse IDE.
 
-## Reference: 
-- Pasta Making 101 is an introductory course for home chefs seeking to improve their Italian cooking and pasta-making skills. Throughout the course we will cover techniques used by executive chefs throughout the world, and walk you through a step-by-step process for creating these masterpieces at home, and we’ll even include a few “secrets of the pros.
-- Because our goal is to get you up to speed as quickly as possible, we’ll cover the different kinds of pasta around the world, equipment basics, ingredient prep, shaping techniques, the ideal water-to-starch ratio, boiling methods, and some of my favorite family recipes.  At the end of the course you’ll be a past-making maestro, with enough confidence to open a pop-up restaurant, or just host a delicious dinner party.
 
-### Step List
-- TODO
-- TODO
+### Introduction
+Developing your first application with XYZ Framework is fun.
+
+Introduction to XYZ Framework..
+
+In this course, you will learn the basics developing a Basic Todo Management Application using XYZ Framework.
+
+You will build the application step by step - in more than 25 steps. This course would be a perfect first step as an introduction to XYZ Framework.
+
+You will be using Spring (Dependency Management), Spring MVC, Spring Boot, Spring Security (Authentication and Authorization), BootStrap (Styling Pages), Maven (dependencies management), Eclipse (IDE) and Tomcat Embedded Web Server. We will help you set up each one of these.
+
+You will learn about
+- Topic No 1
+- Topic No 1
+- Topic No 1
+- Topic No 1
+- Topic No 1
+
+### Step Wise Details
+- Step 01: Learn to Dance
+- Step 02: 
+- Step 03: 
+- Step 04: 
+- Step 05: 
+- Step 06: 
+- Step 07: 
+- Step 08: 
+- Step 09: 
+- Step 10: 
+- Step 11: 
+- Step 12: 
+- Step 13: 
+- Step 14: 
+- Step 15: 
+- Step 16: 
+- Step 17: 
+- Step 18: 
+- Step 19: 
+- Step 20: 
+- Step 21: 
+- Step 22: 
+- Step 23: 
+- Step 24: 
+- Step 25: 
 
 ### Expectations
 - You should know ***. 
