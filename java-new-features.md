@@ -1,20 +1,20 @@
 \readme.txt
 ```
-##Java 5
-###StringBuilder class
-###Generics
-###Enhanced for Loop
-###Autoboxing/Unboxing
+## Java 5
+### StringBuilder class
+### Generics
+### Enhanced for Loop
+### Autoboxing/Unboxing
 - Adding a primitive to Collection
 - Using a primitive as a key to access the collection
 - Incrementing a Wrapper Variable
-###Typesafe Enums
-###Varargs
-###Static Import
+### Typesafe Enums
+### Varargs
+### Static Import
 import static java.lang.Math.PI;
 or en masse:
 import static java.lang.Math.*;
-###Metadata (Annotations)
+### Metadata (Annotations)
 /**
  * Describes the Request-For-Enhancement(RFE) that led
  * to the presence of the annotated API element.
@@ -92,10 +92,10 @@ public class RunTests {
    }
 }
 
-###Concurrent Collections
+### Concurrent Collections
 The java.util.concurrent, java.util.concurrent.atomic, and java.util.concurrent.locks packages provide a extensible framework of high-performance, scalable, thread-safe building blocks for developing concurrent classes and applications, including thread pools, thread-safe collections, semaphores, a task scheduling framework, task synchronization utilities, atomic variables, and locks. Additionally, these packages provide low-level primitives for advanced concurrent programming which take advantage of concurrency support provided by the processor, enabling you to implement high-performance, highly scalable concurrent algorithms in Java to a degree not previously possible without using native code.
-###Minor
-####Scanner
+### Minor
+#### Scanner
  String input = "1 fish 2 fish red fish blue fish";
      Scanner s = new Scanner(input).useDelimiter("\\s*fish\\s*");
      System.out.println(s.nextInt());
@@ -104,15 +104,15 @@ The java.util.concurrent, java.util.concurrent.atomic, and java.util.concurrent.
      System.out.println(s.next());
      s.close(); 
      
-##Java 6
+## Java 6
 NavigableSet - a SortedSet extended with navigation methods reporting closest matches for given search targets. A NavigableSet may be accessed and traversed in either ascending or descending order. This interface is intended to supersede the SortedSet interface.
 NavigableMap - a SortedMap extended with navigation methods returning the closest matches for given search targets. A NavigableMap may be accessed and traversed in either ascending or descending key order. This interface is intended to supersede the SortedMap interface
 GC Parallel Compaction : Parallel compaction complements the existing parallel collector by performing full GCs in parallel to take advantage of multiprocessor (or multi-threaded) hardware. As the name suggests, it is best suited to platforms that have two or more CPUs or two or more hardware threads. It was first made available in JDK 5.0 update 6; the implementation in JDK 6 contains significant performance improvements.
 @Override annotations on methods specified by an interface
 
-##Java 7
-###Underscores in Numeric Literals - Any number of underscore characters (_) can appear anywhere between digits in a numerical literal. This feature enables you, for example, to separate groups of digits in numeric literals, which can improve the readability of your code.
-###Strings in switch Statements - You can use the String class in the expression of a switch statement.
+## Java 7
+### Underscores in Numeric Literals - Any number of underscore characters (_) can appear anywhere between digits in a numerical literal. This feature enables you, for example, to separate groups of digits in numeric literals, which can improve the readability of your code.
+### Strings in switch Statements - You can use the String class in the expression of a switch statement.
 public String getTypeOfDayWithSwitchStatement(String dayOfWeekArg) {
      String typeOfDay;
      switch (dayOfWeekArg) {
@@ -137,11 +137,11 @@ public String getTypeOfDayWithSwitchStatement(String dayOfWeekArg) {
      return typeOfDay;
 }
 
-###Type Inference for Generic Instance Creation - You can replace the type arguments required to invoke the constructor of a generic class with an empty set of type parameters (<>) as long as the compiler can infer the type arguments from the context. This pair of angle brackets is informally called the diamond.
+### Type Inference for Generic Instance Creation - You can replace the type arguments required to invoke the constructor of a generic class with an empty set of type parameters (<>) as long as the compiler can infer the type arguments from the context. This pair of angle brackets is informally called the diamond.
 Map<String, List<String>> myMap = new HashMap<String, List<String>>();
 In Java SE 7, you can substitute the parameterized type of the constructor with an empty set of type parameters (<>):
 Map<String, List<String>> myMap = new HashMap<>();//Note that to take advantage of automatic type inference during generic class instantiation, you must specify the diamond
-###The try-with-resources Statement - The try-with-resources statement is a try statement that declares one or more resources. A resource is an object that must be closed after the program is finished with it. The try-with-resources statement ensures that each resource is closed at the end of the statement. Any object that implements the new java.lang.AutoCloseable interface or the java.io.Closeable interface can be used as a resource. The classes java.io.InputStream, OutputStream, Reader, Writer, java.sql.Connection, Statement, and ResultSet have been retrofitted to implement the AutoCloseable interface and can all be used as resources in a try-with-resources statement.
+### The try-with-resources Statement - The try-with-resources statement is a try statement that declares one or more resources. A resource is an object that must be closed after the program is finished with it. The try-with-resources statement ensures that each resource is closed at the end of the statement. Any object that implements the new java.lang.AutoCloseable interface or the java.io.Closeable interface can be used as a resource. The classes java.io.InputStream, OutputStream, Reader, Writer, java.sql.Connection, Statement, and ResultSet have been retrofitted to implement the AutoCloseable interface and can all be used as resources in a try-with-resources statement.
  The class BufferedReader, in Java SE 7 and later, implements the interface java.lang.AutoCloseable. Because the BufferedReader instance is declared in a try-with-resource statement, it will be closed regardless of whether the try statement completes normally or abruptly (as a result of the method BufferedReader.readLine throwing an IOException).
 static String readFirstLineFromFileWithFinallyBlock(String path) throws IOException {
   BufferedReader br = new BufferedReader(new FileReader(path));
@@ -212,7 +212,7 @@ The following example uses a try-with-resources statement to automatically close
     }
   }
 
-###Catching Multiple Exception Types and Rethrowing Exceptions with Improved Type Checking - A single catch block can handle more than one type of exception. In addition, the compiler performs more precise analysis of rethrown exceptions than earlier releases of Java SE. This enables you to specify more specific exception types in the throws clause of a method declaration.
+### Catching Multiple Exception Types and Rethrowing Exceptions with Improved Type Checking - A single catch block can handle more than one type of exception. In addition, the compiler performs more precise analysis of rethrown exceptions than earlier releases of Java SE. This enables you to specify more specific exception types in the throws clause of a method declaration.
 catch (IOException ex) {
      logger.log(ex);
      throw ex;
@@ -280,23 +280,23 @@ Here’s a full example of how to watch a directory and print any newly created 
 Run the above program. Then create a file ‘new.txt’ in the directory ‘logs’. The program will print:
 logs: new file created new.txt
 
-##Java 8
+## Java 8
 Java Programming Language
-###Lambda Expressions, a new language feature, has been introduced in this release. They enable you to treat functionality as a method argument, or code as data. Lambda expressions let you express instances of single-method interfaces (referred to as functional interfaces) more compactly.
-###Method references provide easy-to-read lambda expressions for methods that already have a name.
-###Default methods enable new functionality to be added to the interfaces of libraries and ensure binary compatibility with code written for older versions of those interfaces.
-###Repeating Annotations provide the ability to apply the same annotation type more than once to the same declaration or type use.
+### Lambda Expressions, a new language feature, has been introduced in this release. They enable you to treat functionality as a method argument, or code as data. Lambda expressions let you express instances of single-method interfaces (referred to as functional interfaces) more compactly.
+### Method references provide easy-to-read lambda expressions for methods that already have a name.
+### Default methods enable new functionality to be added to the interfaces of libraries and ensure binary compatibility with code written for older versions of those interfaces.
+### Repeating Annotations provide the ability to apply the same annotation type more than once to the same declaration or type use.
 Repeating Annotations - It is now possible to apply the same annotation type more than once to the same declaration or type use. For more information, see Repeating Annotations in the new Annotations lesson in the Java Tutorial.
-###Type Annotations provide the ability to apply an annotation anywhere a type is used, not just on a declaration. Used with a pluggable type system, this feature enables improved type checking of your code.
+### Type Annotations provide the ability to apply an annotation anywhere a type is used, not just on a declaration. Used with a pluggable type system, this feature enables improved type checking of your code.
 Annotations on Java Types - It is now possible to apply an annotation anywhere a type is used. Used in conjunction with a pluggable type system, this allows for stronger type checking of your code. For more information, see Type Annotations and Pluggable Type Systems in the new Annotations lesson in the Java Tutorial.
-###Improved type inference.
-###Method parameter reflection.
-###Classes in the new java.util.stream package provide a Stream API to support functional-style operations on streams of elements. The Stream API is integrated into the Collections API, which enables bulk operations on collections, such as sequential or parallel map-reduce transformations.
-###Performance Improvement for HashMaps with Key Collisions
-###Scripting : Nashorn Javascript Engine
+### Improved type inference.
+### Method parameter reflection.
+### Classes in the new java.util.stream package provide a Stream API to support functional-style operations on streams of elements. The Stream API is integrated into the Collections API, which enables bulk operations on collections, such as sequential or parallel map-reduce transformations.
+### Performance Improvement for HashMaps with Key Collisions
+### Scripting : Nashorn Javascript Engine
 This is the javascript engine that enables us to run javascript to run on a  jvm. It is similar to the V8 engine provided by chrome over which Node.js runs. It is compatible with Node.js applications while also allowing actual Java libraries to be called by the javascript code running on server. This is exciting to say at the least as it marries scalability and asynchronous nature of Node.js with safe and widespread server side Java middleware directly.
 ###java.lang and java.util Packages : Parallel Array Sorting & Standard Encoding and Decoding Base64 & Unsigned Arithmetic Support
-###Enhanced methods using Lambdas and Streams
+### Enhanced methods using Lambdas and Streams
 ```
 Integer[] intArray = {1, 2, 3, 4, 5, 6, 7, 8 };
 List<Integer> listOfIntegers =
@@ -308,7 +308,7 @@ List<Integer> listOfIntegers =
 ```
 
             
-###Switching to the new Date API
+### Switching to the new Date API
 Java 8 introduces a complete new date-time API.  You kind of know it’s about time when most of the methods of the current one are marked as deprecated... The new API brings ease-of-use and accuracy long provided by the popular Joda time API into the core Java library.
 As with any new API the good news is that it’s more elegant and functional. Unfortunately there are still vast amounts of code out there using the old API, and that won’t change any time soon.
 To help bridge the gap between the old and new API’s, the venerable Date class now has a new method called toInstant() which converts the Date into the new representation. This can be especially effective in those cases where you're working on an API that expects the classic form, but would like to enjoy everything the new API has to offer.
@@ -378,7 +378,7 @@ BiFunction<T, U, R>
  At 100 students, almost same
  At 10,000 students, parallel code multiple times faster.
  
- ##Interfaces
+ ## Interfaces
 In support of Streams, there are new methods in interfaces such as List, Map, and Set, which have been largely unchanged since the long-gone days of Java 1.1. Fortunately the Java 8 language support adds a default method type in interfaces, so your custom implementations of these interfaces are not required to change (as long as you make sure you change your IDE settings to Java 8 Compiler Compliance).
 As one example of default methods in action, Iterable gets a new default method called forEach(), which lets you write code like this:
 myList.forEach(o -> /* do something with o here... */);
